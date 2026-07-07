@@ -1,8 +1,8 @@
-[submodule "apps/web"]
-	path = apps/web
+[submodule "settlemate-fe"]
+	path = settlemate-fe
 	url = https://github.com/settlemate-labs/settlemate-fe.git
 	branch = develop
-[submodule "services/api"]
-	path = services/api
+[submodule "settlemate-be"]
+	path = settlemate-be
 	url = https://github.com/settlemate-labs/settlemate-be.git
 	branch = develop
