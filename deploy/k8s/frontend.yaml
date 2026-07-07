@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: settlemate-fe
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: settlemate-fe
+  template:
+    metadata:
+      labels:
+        app: settlemate-fe
+        tags.datadoghq.com/service: settlemate-fe
+    spec:
+      containers:
+        - name: web
+          image: ghcr.io/settlemate-labs/settlemate-fe:develop
+          ports:
+            - containerPort: 8081
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: settlemate-fe
+spec:
+  selector:
+    app: settlemate-fe
+  ports:
+    - port: 8081
+      targetPort: 8081
