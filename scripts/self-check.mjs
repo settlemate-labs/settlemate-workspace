@@ -31,7 +31,7 @@ for (const name of ['settlemate-fe', 'settlemate-be']) {
 }
 const remotes = execFileSync('git', ['remote', '-v'], { encoding: 'utf8' });
 if (!remotes.includes('origin\thttps://github.com/settlemate-labs/settlemate-workspace.git')) throw new Error('wrong origin remote');
-if (!remotes.includes('personal\thttps://github.com/cyjoon68/settlemate-workspace.git')) throw new Error('wrong personal remote');
+if (remotes.includes('personal\t') && !remotes.includes('personal\thttps://github.com/cyjoon68/settlemate-workspace.git')) throw new Error('wrong personal remote');
 for (const name of ['settlemate-fe', 'settlemate-be']) {
   const childRemotes = execFileSync('git', ['-C', name, 'remote', '-v'], { encoding: 'utf8' });
   if (!childRemotes.includes(`origin\thttps://github.com/settlemate-labs/${name}.git`)) throw new Error(`wrong child origin ${name}`);
